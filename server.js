@@ -7,7 +7,9 @@ const { exec } = require("child_process");
 
 const PORT = process.env.PORT || 3000;
 const ROOT = __dirname;
-const STORAGE_DIR = path.join(ROOT, "storage");
+const STORAGE_DIR = process.env.VERCEL || process.env.NETLIFY
+  ? path.join(os.tmpdir(), "notom-storage")
+  : path.join(ROOT, "storage");
 const DB_FILE = path.join(STORAGE_DIR, "user_state.json");
 
 // Ensure storage directory & DB file exist

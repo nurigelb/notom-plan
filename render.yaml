@@ -10,3 +10,4 @@ services:
         value: production
       - key: NO_OPEN
         value: "1"
+
