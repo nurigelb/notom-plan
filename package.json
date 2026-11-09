@@ -1,0 +1,19 @@
+{
+  "name": "notom-plan-app",
+  "version": "1.0.0",
+  "description": "Tenis, TSM Keman ve AI Mühendisliği Ücretsiz Kurs Planı Mobil PWA Uygulaması",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "echo \"Bu uygulama saf PWA olarak hazirlandi, build adimina gerek yoktur.\""
+  },
+  "keywords": [
+    "tenis",
+    "tsm-keman",
+    "ai-engineer",
+    "pwa"
+  ],
+  "license": "MIT"
+}
+

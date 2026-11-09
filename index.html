@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b1120" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="NoTom Plan" />
+  <title>NoTom — Tenis · TSM Keman · AI Mühendisliği</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="brand-group">
+        <img src="icon.svg" alt="NoTom Icon" class="brand-icon" />
+        <div>
+          <div class="brand-title">Tenis · Keman · AI</div>
+          <div class="brand-subtitle" id="sync-status-text">☁️ Otomatik Kayıt Aktif</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="icon-btn" onclick="selectDay(new Date().getDay()); switchTab('today');" title="Bugüne Git">
+          📅 Bugün
+        </button>
+        <button class="icon-btn" onclick="switchTab('studio')" title="Metronom & Akort">
+          🎻 Stüdyo
+        </button>
+      </div>
+    </header>
+
+    <!-- Top Quick Progress Strip -->
+    <div id="top-streak-strip" class="streak-strip"></div>
+
+    <!-- Day Selector Bar (Pzt - Paz) -->
+    <div id="day-selector-bar" class="day-selector"></div>
+
+    <!-- Main Dynamic View -->
+    <main id="main-view-container" class="view-container"></main>
+
+    <!-- Bottom Tab Navigation (5 Tabs) -->
+    <nav class="bottom-nav" aria-label="Alt Menü">
+      <div class="bottom-nav-inner">
+        <button class="nav-tab active" data-tab="today" onclick="switchTab('today')">
+          <span class="nav-icon">⚡</span>
+          <span>Bugün</span>
+        </button>
+        <button class="nav-tab" data-tab="modules" onclick="switchTab('modules')">
+          <span class="nav-icon">🎓</span>
+          <span>Modül & Sınav</span>
+        </button>
+        <button class="nav-tab" data-tab="studio" onclick="switchTab('studio')">
+          <span class="nav-icon">🎻</span>
+          <span>Stüdyo & Koma</span>
+        </button>
+        <button class="nav-tab" data-tab="checklist" onclick="switchTab('checklist')">
+          <span class="nav-icon">🎥</span>
+          <span>Pazar & Video</span>
+        </button>
+        <button class="nav-tab" data-tab="resources" onclick="switchTab('resources')">
+          <span class="nav-icon">🔗</span>
+          <span>Kaynak & App</span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Interactive Session Timer Modal -->
+  <div id="timer-modal" class="modal-overlay" onclick="if(event.target === this) closeTimerModal()">
+    <div id="timer-sheet-content" class="timer-sheet"></div>
+  </div>
+
+  <!-- Exam Pass / Repeat Modal (Rule #1 Gatekeeper) -->
+  <div id="exam-modal" class="modal-overlay" onclick="if(event.target === this) closeExamModal()">
+    <div id="exam-sheet-content" class="timer-sheet"></div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast-msg" class="toast-msg"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
