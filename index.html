@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1120" />
+  <meta name="theme-color" content="#F3F5F9" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="NoTom Plan" />
-  <title>NoTom — Tenis · TSM Keman · AI Mühendisliği</title>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Kurs Planı" />
+  <title>Tenis · TSM Keman · AI Mühendisliği</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="icon" type="image/svg+xml" href="icon.svg" />
   <link rel="apple-touch-icon" href="icon-192.png" />
@@ -15,72 +15,69 @@
 </head>
 <body>
   <div class="app-shell">
-    <!-- Top Header -->
+    <!-- Üst Başlık (iPhone Safe-Area Uyumlu) -->
     <header class="app-header">
-      <div class="brand-group">
-        <img src="icon.svg" alt="NoTom Icon" class="brand-icon" />
-        <div>
-          <div class="brand-title">Tenis · Keman · AI</div>
-          <div class="brand-subtitle" id="sync-status-text">☁️ Otomatik Kayıt Aktif</div>
-        </div>
+      <div class="header-titles">
+        <h1 class="brand-title">Kurs Planı</h1>
+        <span class="brand-subtitle" id="header-subtitle">
+          <span class="color-dots-inline">
+            <i style="background:#0F8A5F"></i>
+            <i style="background:#D95338"></i>
+            <i style="background:#3B5BDB"></i>
+          </span>
+          Tenis · TSM Keman · AI
+        </span>
       </div>
-      <div class="header-actions">
-        <button class="icon-btn" onclick="selectDay(new Date().getDay()); switchTab('today');" title="Bugüne Git">
-          📅 Bugün
-        </button>
-        <button class="icon-btn" onclick="switchTab('studio')" title="Metronom & Akort">
-          🎻 Stüdyo
-        </button>
-      </div>
+      <button class="btn-ghost" onclick="selectDay(new Date().getDay()); switchTab('today');">
+        Bugün
+      </button>
     </header>
 
-    <!-- Top Quick Progress Strip -->
-    <div id="top-streak-strip" class="streak-strip"></div>
-
-    <!-- Day Selector Bar (Pzt - Paz) -->
+    <!-- Haftanın Günleri (Sadece Bugün sekmesinde görünür) -->
     <div id="day-selector-bar" class="day-selector"></div>
 
-    <!-- Main Dynamic View -->
+    <!-- Ana Görünüm -->
     <main id="main-view-container" class="view-container"></main>
 
-    <!-- Bottom Tab Navigation (5 Tabs) -->
+    <!-- Alt Menü (4 Sade Sekme, Çizgisel İkonlar) -->
     <nav class="bottom-nav" aria-label="Alt Menü">
       <div class="bottom-nav-inner">
         <button class="nav-tab active" data-tab="today" onclick="switchTab('today')">
-          <span class="nav-icon">⚡</span>
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           <span>Bugün</span>
         </button>
         <button class="nav-tab" data-tab="modules" onclick="switchTab('modules')">
-          <span class="nav-icon">🎓</span>
-          <span>Modül & Sınav</span>
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Müfredat</span>
         </button>
         <button class="nav-tab" data-tab="studio" onclick="switchTab('studio')">
-          <span class="nav-icon">🎻</span>
-          <span>Stüdyo & Koma</span>
-        </button>
-        <button class="nav-tab" data-tab="checklist" onclick="switchTab('checklist')">
-          <span class="nav-icon">🎥</span>
-          <span>Pazar & Video</span>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+          <span>Araçlar</span>
         </button>
         <button class="nav-tab" data-tab="resources" onclick="switchTab('resources')">
-          <span class="nav-icon">🔗</span>
-          <span>Kaynak & App</span>
+          <svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          <span>Kaynaklar</span>
         </button>
       </div>
     </nav>
   </div>
 
-  <!-- Interactive Session Timer Modal -->
+  <!-- Seans Zamanlayıcı Penceresi -->
   <div id="timer-modal" class="modal-overlay" onclick="if(event.target === this) closeTimerModal()">
     <div id="timer-sheet-content" class="timer-sheet"></div>
   </div>
 
-  <!-- Exam Pass / Repeat Modal (Rule #1 Gatekeeper) -->
+  <!-- Sınav / Geçme Kriteri Penceresi -->
   <div id="exam-modal" class="modal-overlay" onclick="if(event.target === this) closeExamModal()">
     <div id="exam-sheet-content" class="timer-sheet"></div>
   </div>
 
-  <!-- Toast Notification -->
+  <!-- Hafta İçi Erteleme Penceresi -->
+  <div id="reschedule-modal" class="modal-overlay" onclick="if(event.target === this) closeRescheduleModal()">
+    <div id="reschedule-sheet-content" class="timer-sheet"></div>
+  </div>
+
+  <!-- Bildirim -->
   <div id="toast-msg" class="toast-msg"></div>
 
   <script src="data.js"></script>
