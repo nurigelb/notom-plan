@@ -1,33 +1,39 @@
 // NoTom — Tenis (Kortsuz Park+Ev) · TSM Keman (Hohmann & Wohlfahrt) · AI Mühendisliği Verisi
+// Çalışanlar İçin Optimize Edilmiş Hafif Program: Günde 1 Görev (~25-45 dk), Çarşamba Tam Dinlenme/Boş.
 
 const PLAN_DATA = {
   meta: {
     title: "Tenis · TSM Keman · AI Mühendisliği",
-    subtitle: "Ücretsiz Kurs Planı",
-    date: "9 Kas 2026",
+    subtitle: "Hafifletilmiş Kurs Planı (Günde 1 Görev, Çarşamba Boş)",
+    date: "11 Kas 2026",
     author: "@nurigelb",
-    weeklyTotalHours: "~9,5 saat/hafta",
+    weeklyTotalHours: "~3,5 - 4 saat/hafta",
     rules: [
       {
         number: 1,
+        title: "Günde sadece 1 odak görevi",
+        desc: "İş çıkışı saat 18:00'den sonra yorulmadan sürdürülebilmesi için her güne tek bir odak seansı konuldu. Çarşamba günleri tamamen boş."
+      },
+      {
+        number: 2,
         title: "Geçme kriteri olmadan bir sonraki modüle geçme",
         desc: "Her modülün sonunda bir 'sınav' var. Geçemezsen o modülü 1 hafta daha tekrarla."
       },
       {
-        number: 2,
+        number: 3,
         title: "Her pazar 5 dakikalık video kaydı al",
-        desc: "Tenis gölge vuruşu ve keman için 5 dk video çek. Öğretmensiz çalışmada tek geri bildirimin bu; bir önceki haftayla yan yana izle."
+        desc: "Tenis gölge vuruşu ve keman için pazar 5 dk video çek. Öğretmensiz çalışmada tek geri bildirimin bu; bir önceki haftayla yan yana izle."
       },
       {
-        number: 3,
+        number: 4,
         title: "Kötü hava planı bozmaz",
         desc: "Yağmurda park seansı yerine evde 10 dakikalık hız devresi + C seansı yap; sıçramaları ıslak zeminde yapma."
       }
     ],
-    proTip: "Keman ve tenis teknik hatalarını kendin fark etmekte zorlanabilirsin. Ayda bir tek seferlik özel ders (veya bir hocaya video gönderip yorum almak) bu planın en verimli eki olur."
+    proTip: "Hafta içi seansları 25-40 dk aralığında tutuldu. Çarşamba günün tamamen sana ait. Eğer bir gün yorgun olursan 'Ertele' butonuyla görevi Cumartesi veya Pazar gününe kaydırabilirsin."
   },
 
-  // Haftalık Program (1: Pazartesi ... 0: Pazar)
+  // Haftalık Program (Günde 1 Görev, Çarşamba Boş)
   weeklySchedule: [
     {
       dayIndex: 1,
@@ -35,24 +41,11 @@ const PLAN_DATA = {
       shortName: "Pzt",
       sessions: [
         {
-          id: "mon-tennis",
-          courseId: "tennis",
-          sessionType: "C",
-          courseTitle: "Tenis (C — Ev)",
-          durationMinutes: 25,
-          focusTitle: "C — Ev: Gölge vuruş + sünger top volesi",
-          subSteps: [
-            { label: "Haftanın Feel Tennis videosu ve aynada gölge vuruş", minutes: 10 },
-            { label: "Sünger topla duvar volesi (1–2 m mesafe, bantlı hedef kareleri)", minutes: 10 },
-            { label: "Raketle top sektirme ve kontrol", minutes: 5 }
-          ]
-        },
-        {
           id: "mon-violin",
           courseId: "violin",
           courseTitle: "TSM Keman",
           durationMinutes: 30,
-          focusTitle: "Hohmann + boş tel",
+          focusTitle: "Hohmann + Boş Tel (Haftanın Açılışı)",
           useModuleSteps: true
         }
       ]
@@ -69,9 +62,9 @@ const PLAN_DATA = {
           hasWeatherToggle: true,
           courseTitle: "Tenis (A — Park)",
           durationMinutes: 40,
-          focusTitle: "A — Park: Patlayıcılık + sprint",
+          focusTitle: "A — Park: Patlayıcılık + Sprint",
           subSteps: [
-            { label: "Isınma: Hafif koşu, dinamik esneme, 2 dk atlama ipi", minutes: 8 },
+            { label: "Isınma: Hafif koşu, dinamik esneme, 2 dk ip", minutes: 8 },
             { label: "Aktif fazın plyometri / patlayıcılık setleri (1,5–2 dk dinlenmeli)", minutes: 20 },
             { label: "Split-step'ten 10 m sprint tekrarları", minutes: 7 },
             { label: "Soğuma ve esneme (Ağrı varsa sıçramaları kes)", minutes: 5 }
@@ -81,25 +74,6 @@ const PLAN_DATA = {
             { label: "C Seansı: Haftanın videosu + aynada gölge vuruş", minutes: 10 },
             { label: "C Seansı: Sünger topla duvar volesi + top kontrolü", minutes: 15 }
           ]
-        },
-        {
-          id: "tue-violin",
-          courseId: "violin",
-          courseTitle: "TSM Keman",
-          durationMinutes: 30,
-          focusTitle: "Makam dizisi + dinleme",
-          useModuleSteps: true
-        },
-        {
-          id: "tue-ai",
-          courseId: "ai",
-          courseTitle: "AI Mühendisliği",
-          durationMinutes: 60,
-          focusTitle: "60 dk: Kursun sıradaki dersi",
-          subSteps: [
-            { label: "Aktif modülün sıradaki kurs dersi / materyali", minutes: 30 },
-            { label: "Kodlama pratiği ve uygulama", minutes: 30 }
-          ]
         }
       ]
     },
@@ -107,53 +81,23 @@ const PLAN_DATA = {
       dayIndex: 3,
       dayName: "Çarşamba",
       shortName: "Çar",
-      sessions: [
-        {
-          id: "wed-tennis",
-          courseId: "tennis",
-          sessionType: "C",
-          courseTitle: "Tenis (C — Ev)",
-          durationMinutes: 25,
-          focusTitle: "C — Ev: Teknik + top hissi",
-          subSteps: [
-            { label: "Haftanın videosu ve aynada gölge vuruş", minutes: 10 },
-            { label: "Sünger topla duvar volesi (1–2 m, hedef kareleri)", minutes: 10 },
-            { label: "Raketle top sektirme ve kontrol", minutes: 5 }
-          ]
-        },
-        {
-          id: "wed-violin",
-          courseId: "violin",
-          courseTitle: "TSM Keman",
-          durationMinutes: 30,
-          focusTitle: "Hohmann / Wohlfahrt etüdü",
-          useModuleSteps: true
-        }
-      ]
+      restNote: "Planlı boş gün (Dolu günler için dinlenme)",
+      sessions: []
     },
     {
       dayIndex: 4,
       dayName: "Perşembe",
       shortName: "Per",
-      restNote: "Tenis dinlenme günü",
       sessions: [
-        {
-          id: "thu-violin",
-          courseId: "violin",
-          courseTitle: "TSM Keman",
-          durationMinutes: 30,
-          focusTitle: "Etüt + çarpma",
-          useModuleSteps: true
-        },
         {
           id: "thu-ai",
           courseId: "ai",
           courseTitle: "AI Mühendisliği",
-          durationMinutes: 60,
-          focusTitle: "60 dk: Kursun sıradaki dersi",
+          durationMinutes: 45,
+          focusTitle: "45 dk: Kursun Sıradaki Dersi",
           subSteps: [
-            { label: "Aktif modülün sıradaki dersi / ünitesi", minutes: 30 },
-            { label: "Kod yazımı ve örnek çalıştırma", minutes: 30 }
+            { label: "Aktif modülün sıradaki ders videosu / okuması", minutes: 25 },
+            { label: "Uygulamalı kod yazımı ve deneme", minutes: 20 }
           ]
         }
       ]
@@ -166,30 +110,15 @@ const PLAN_DATA = {
         {
           id: "fri-tennis",
           courseId: "tennis",
-          sessionType: "B",
-          hasWeatherToggle: true,
-          courseTitle: "Tenis (B — Park)",
-          durationMinutes: 35,
-          focusTitle: "B — Park: Ayak işi + kondisyon",
+          sessionType: "C",
+          courseTitle: "Tenis (C — Ev)",
+          durationMinutes: 25,
+          focusTitle: "C — Ev: Gölge Vuruş + Sünger Top Volesi",
           subSteps: [
-            { label: "Dinamik ısınma + yan adım ve çapraz adım", minutes: 7 },
-            { label: "İşaretlerle yıldız/örümcek drili veya 5-10-5 mekik", minutes: 13 },
-            { label: "Gölge puan senaryosu (Split-step → hareket → vuruş → merkez, 30sn/30sn)", minutes: 10 },
-            { label: "Soğuma ve esneme", minutes: 5 }
-          ],
-          rainySubSteps: [
-            { label: "Coach 10 dk Hızlı Ev Devresi (5 hareket, 20 sn × 4 tur)", minutes: 10 },
-            { label: "C Seansı: Gölge vuruş + sünger topla duvar volesi", minutes: 20 },
-            { label: "Raketle top kontrolü ve esneme", minutes: 5 }
+            { label: "Haftanın Feel Tennis videosu ve aynada gölge vuruş", minutes: 10 },
+            { label: "Sünger topla duvar volesi (1–2 m mesafe, bantlı hedef kareleri)", minutes: 10 },
+            { label: "Raketle top sektirme ve kontrol", minutes: 5 }
           ]
-        },
-        {
-          id: "fri-violin",
-          courseId: "violin",
-          courseTitle: "TSM Keman",
-          durationMinutes: 30,
-          focusTitle: "TSM eseri + kayıt",
-          useModuleSteps: true
         }
       ]
     },
@@ -199,47 +128,15 @@ const PLAN_DATA = {
       shortName: "Cmt",
       sessions: [
         {
-          id: "sat-tennis",
-          courseId: "tennis",
-          sessionType: "A",
-          hasWeatherToggle: true,
-          courseTitle: "Tenis (A — Park)",
-          durationMinutes: 40,
-          focusTitle: "A — Park: Patlayıcılık + hız (Salı'dan >48 sa sonra)",
-          subSteps: [
-            { label: "Isınma: Hafif koşu, dinamik esneme, 2 dk atlama ipi", minutes: 8 },
-            { label: "Aktif fazın plyometri / patlayıcılık setleri", minutes: 20 },
-            { label: "Split-step'ten 10 m sprint tekrarları", minutes: 7 },
-            { label: "Soğuma ve esneme", minutes: 5 }
-          ],
-          rainySubSteps: [
-            { label: "Coach 10 dk Hızlı Ev Devresi (5 hareket, 20 sn × 4 tur)", minutes: 10 },
-            { label: "C Seansı: Haftanın videosu ve aynada gölge vuruş", minutes: 10 },
-            { label: "C Seansı: Sünger topla duvar volesi + top kontrolü", minutes: 15 }
-          ]
-        },
-        {
-          id: "sat-violin",
-          courseId: "violin",
-          courseTitle: "TSM Keman",
-          durationMinutes: 30,
-          focusTitle: "Serbest: Sevdiğin eser veya taksim denemesi",
-          subSteps: [
-            { label: "Boş tel ve makam dizisi ısınması", minutes: 10 },
-            { label: "Sevdiğin bir TSM eseri veya serbest taksim denemesi", minutes: 15 },
-            { label: "Dinleme ve değerlendirme", minutes: 5 }
-          ]
-        },
-        {
           id: "sat-ai",
           courseId: "ai",
           courseTitle: "AI Mühendisliği",
-          durationMinutes: 90,
-          focusTitle: "90 dk: Ay sonu projesi (GitHub)",
+          durationMinutes: 60,
+          focusTitle: "60 dk: Ay Sonu Projesi / Pratik Kodlama",
           subSteps: [
-            { label: "Proje mimarisi ve görev planlaması", minutes: 15 },
-            { label: "Derin kodlama bloğu (Ay sonu GitHub projesi)", minutes: 60 },
-            { label: "Test, Git commit ve README güncellemesi", minutes: 15 }
+            { label: "Proje mimarisi ve görev planı", minutes: 10 },
+            { label: "GitHub projesi için kodlama bloğu", minutes: 40 },
+            { label: "Git commit, test ve dokümantasyon", minutes: 10 }
           ]
         }
       ]
@@ -250,33 +147,15 @@ const PLAN_DATA = {
       shortName: "Paz",
       sessions: [
         {
-          id: "sun-tennis-video",
-          courseId: "tennis",
-          courseTitle: "Tenis Video & Esneme",
-          durationMinutes: 5,
-          focusTitle: "5 dk gölge vuruş videosu + esneme",
-          subSteps: [
-            { label: "5 dk gölge vuruş videosu çek, geçen haftayla yan yana izle ve esne", minutes: 5 }
-          ]
-        },
-        {
-          id: "sun-violin-video",
+          id: "sun-violin",
           courseId: "violin",
-          courseTitle: "Keman Video Kaydı",
-          durationMinutes: 5,
-          focusTitle: "5 dk video kaydı",
+          courseTitle: "TSM Keman & Video",
+          durationMinutes: 35,
+          focusTitle: "30 dk TSM Keman + 5 dk Karşılaştırma Videosu",
           subSteps: [
-            { label: "Aktif modülün Hohmann/Wohlfahrt etüdünü veya dizisini kaydet ve karşılaştır", minutes: 5 }
-          ]
-        },
-        {
-          id: "sun-review",
-          courseId: "ai",
-          courseTitle: "Haftalık Gözden Geçirme",
-          durationMinutes: 15,
-          focusTitle: "Haftalık gözden geçirme (15 dk)",
-          subSteps: [
-            { label: "Kontrol listesini işaretle, sınav kriterlerini ve yeni haftayı gözden geçir", minutes: 15 }
+            { label: "Makam dizisi ısınması ve Hohmann / Wohlfahrt etüdü", minutes: 20 },
+            { label: "Sevdiğin bir TSM eseri veya serbest taksim denemesi", minutes: 10 },
+            { label: "5 dk gelişim videosu kaydet (keman ve tenis gölge)", minutes: 5 }
           ]
         }
       ]
@@ -288,9 +167,9 @@ const PLAN_DATA = {
     tennis: {
       id: "tennis",
       title: "Kurs 1 — Tenis (Kortsuz: Park + Ev)",
-      badge: "2×40 dk + 1×35 dk Park · 2×25 dk Ev",
+      badge: "Haftada 2 Seans (Salı Park, Cuma Ev)",
       equipment: "Raket, sünger top, atlama ipi (varsa), işaret olarak 4–5 şişe ya da ayakkabı, yere bant, kronometre.",
-      sessionTemplateNote: "İki A (patlayıcılık) seansı arasında en az 48 saat olsun. Diz, bilek veya aşil bölgesinde ağrı olursa o haftanın sıçramalarını kes, yalnız B ve C seanslarını yap. Yağmurda park seansı yerine evde 10 dk hız devresi + C seansı yap.",
+      sessionTemplateNote: "Salı günleri dışarıda park/plyometri (40 dk), Cuma günleri evde gölge vuruş ve sünger topla duvar volesi (25 dk). Yağmurda park seansı yerine evde 10 dk hız devresi + C seansı yap.",
       links: [
         {
           title: "Feel Tennis – Forehand Sınıfı (Class Central, 36 Video)",
@@ -347,9 +226,9 @@ const PLAN_DATA = {
     violin: {
       id: "violin",
       title: "Kurs 2 — TSM Keman (Notalı: Hohmann & Wohlfahrt)",
-      badge: "6 × 30 dk / hafta",
+      badge: "Haftada 2 Seans (Pazartesi 30 dk, Pazar 35 dk)",
       equipment: "Keman, yay, Hohmann Kitap 1 PDF, Wohlfahrt Op. 45 PDF, metronom (60 BPM), akortçu.",
-      sessionTemplateNote: "Teknik katman numaralı ve notalı metottan (Hohmann → Wohlfahrt), makam katmanı ise video derslerden ve gerçek TSM notalarından (TRT Nota Arşivi) ilerler.",
+      sessionTemplateNote: "Pazartesi teknik temel (Hohmann + boş tel), Pazar günü makam/eser pratiği ve 5 dakikalık gelişim videosu kaydı.",
       links: [
         {
           title: "Hohmann – Praktische Violinschule (IMSLP Notalı PDF)",
@@ -395,16 +274,6 @@ const PLAN_DATA = {
           title: "Türk Müziği Keman Dersi 1 – Glissando ve Çarpma",
           url: "https://www.youtube.com/watch?v=st6gzkpi7Yg",
           tag: "Tavır"
-        },
-        {
-          title: "Türk Nota Arşivleri Listesi (Oldenburg Üni. PDF)",
-          url: "https://musik-for.uol.de/muezik/pdf/Notenarchive.pdf",
-          tag: "Arşiv Listesi"
-        },
-        {
-          title: "Türk Müziği Keman Metotları İncelemesi (İnönü Üni. 2024)",
-          url: "https://abakus.inonu.edu.tr/items/5417b3f7-bca3-4a29-9537-70a58c2fa47a/full",
-          tag: "Akademik"
         }
       ],
       modules: [
@@ -492,9 +361,9 @@ const PLAN_DATA = {
     ai: {
       id: "ai",
       title: "Kurs 3 — AI / Agentic Mühendisliği",
-      badge: "2×60 dk + 1×90 dk / hafta",
+      badge: "Haftada 2 Seans (Perşembe 45 dk, Cumartesi 60 dk)",
       equipment: "Bilgisayar, Python, Git, GitHub hesabı, Claude / Hugging Face hesapları.",
-      sessionTemplateNote: "Önkoşul: Python ve Git'e rahat değilsen 1. aydan önce 2 hafta MIT'nin ücretsiz 'The Missing Semester' dersleriyle başla. Her ayın sonunda bir proje GitHub'a çıkar.",
+      sessionTemplateNote: "İş çıkışına uygun olarak Perşembe günleri 45 dk teorik ders ve pratik, Cumartesi günleri 60 dk proje kodlama bloğu.",
       links: [
         {
           title: "roadmap.sh – AI Engineer Yol Haritası",

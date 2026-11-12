@@ -517,11 +517,14 @@ function renderTodayView() {
   }
 
   if (effectiveSessions.length === 0) {
+    const isWednesday = dayObj.dayIndex === 3;
     html += `
       <div class="section-card" style="text-align:center;padding:28px 16px;">
-        <div style="font-weight:700;font-size:0.98rem;">Bu gün için bekleyen ders yok</div>
-        <p style="font-size:0.82rem;color:var(--text-secondary);margin-top:4px;">
-          Bu günün derslerini hafta içinde başka bir güne erteledin.
+        <div style="font-weight:700;font-size:1.02rem;color:var(--text-primary);">
+          ${isWednesday ? "☕ Çarşamba: Dinlenme & Serbest Gün" : "Bu gün için bekleyen ders yok"}
+        </div>
+        <p style="font-size:0.83rem;color:var(--text-secondary);margin-top:5px;line-height:1.45;">
+          ${isWednesday ? "Hafta içi iş temposuna nefes aldırmak için Çarşamba günün tamamen boş bırakıldı. İstersen başka bir günün dersini buraya erteleyebilirsin." : "Bu günün dersi tamamlandı ya da başka bir güne ertelendi."}
         </p>
       </div>
     `;

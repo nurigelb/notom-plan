@@ -1,3 +1,56 @@
 {
-  "profiles": {}
+  "profiles": {
+    "nuri": {
+      "state": {
+        "activeModules": {
+          "tennis": 0,
+          "violin": 0,
+          "ai": 0
+        },
+        "passedModules": {
+          "tennis-m1": false,
+          "tennis-m2": false,
+          "tennis-m3": false,
+          "tennis-m4": false,
+          "tennis-m5": false,
+          "tennis-m6": false,
+          "violin-m1": false,
+          "violin-m2": false,
+          "violin-m3": false,
+          "violin-m4": false,
+          "violin-m5": false,
+          "violin-m6": false,
+          "ai-m1": false,
+          "ai-m2": false,
+          "ai-m3": false,
+          "ai-m4": false,
+          "ai-m5": false,
+          "ai-m6": false
+        },
+        "moduleRepeats": {},
+        "completedSessionsByDate": {
+          "2026-11-09": {
+            "mon-tennis": false
+          }
+        },
+        "checklist": {},
+        "weatherMode": "home",
+        "sundayLogs": [],
+        "tennisVideoNumber": 1,
+        "violinLessonStep": 1,
+        "aiCourseStep": 1,
+        "missingSemesterDone": false,
+        "githubProjects": {},
+        "drillCounts": {
+          "sektirme50": 0,
+          "fh20": 0,
+          "bh15": 0,
+          "servis8": 0,
+          "vole30": 0
+        },
+        "selectedDrillId": "fh20"
+      },
+      "updatedAt": "2026-11-09T11:33:16.904Z"
+    }
+  }
 }

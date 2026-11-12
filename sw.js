@@ -1,4 +1,4 @@
-const CACHE_NAME = "notom-pwa-cache-v6";
+const CACHE_NAME = "notom-pwa-cache-v7";
 const ASSETS = [
   "./",
   "./index.html",
